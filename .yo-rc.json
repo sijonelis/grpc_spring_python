@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.vilkazz.grpc"
+    },
+    "jhipsterVersion": "5.5.0",
+    "applicationType": "monolith",
+    "baseName": "grpc_spring",
+    "packageName": "com.vilkazz.grpc",
+    "packageFolder": "com/vilkazz/grpc",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ODFiMDJiYjMyNWQ5YjdiYTAwZDExYjc5NWM1ZGE1NzAwY2VhMzM0MzcyNDk3YTgyNzU4MTNlNmY2ZGY1OTJhODA0MTJmNmMyYjkwMDllMTM1MjhlZGQ3ZWE2OGQ2YmVmYmUwOTRhZjk0YjliNGJhOGI4ZTE4OWFkZmUxZjkzOGU=",
+    "clientFramework": "react",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": false
+  }
+}
