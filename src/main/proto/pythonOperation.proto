@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message OperationRequest {
+  string type = 1;
+  int32 value = 2;
+  int32 operand = 3;
+}
+
+message OperationResponse {
+  int32 respone = 1;
+}

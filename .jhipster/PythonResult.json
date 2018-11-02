@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "requestHash",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "input",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "output",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20181031164457",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "python_result",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
