@@ -235,9 +235,11 @@ dependencies {
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor") {
         exclude group: 'com.vaadin.external.google', module: 'android-json'
     }
+    //grpc
     compile 'io.grpc:grpc-netty-shaded:1.16.1'
     compile 'io.grpc:grpc-protobuf:1.16.1'
     compile 'io.grpc:grpc-stub:1.16.1'
+    compile 'io.grpc:grpc-all:1.12.0'
     testCompile "com.jayway.jsonpath:json-path"
     testCompile ("org.springframework.boot:spring-boot-starter-test") {
         exclude group: 'com.vaadin.external.google', module: 'android-json'
@@ -274,17 +276,21 @@ if (project.hasProperty('nodeInstall')) {
 }
 
 protobuf {
-    protoc {
-        artifact = "com.google.protobuf:protoc:3.5.1-1"
-    }
+    protoc { artifact = "com.google.protobuf:protoc:3.6.1" }
     plugins {
-        grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.16.1'
-        }
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:1.16.1" }
     }
     generateProtoTasks {
-        all()*.plugins {
-            grpc {}
+        all()*.plugins { grpc {} }
+    }
+}
+
+// Inform IDEs like IntelliJ IDEA, Eclipse or NetBeans about the generated code.
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/grpc'
+            srcDirs 'build/generated/source/proto/main/java'
         }
     }
 }

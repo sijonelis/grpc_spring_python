@@ -1,11 +1,22 @@
 syntax = "proto3";
 
-message OperationRequest {
+package pythonOperationGrpc;
+
+option java_multiple_files = true;
+option java_outer_classname = "PythonServiceProto";
+option java_package = "com.vilkazz.grpc.grpc";
+
+message PythonRequest {
   string type = 1;
   int32 value = 2;
   int32 operand = 3;
 }
 
-message OperationResponse {
+message PythonResponse {
   int32 respone = 1;
+  string error = 2;
+}
+
+service PythonService {
+  rpc requestPython (PythonRequest) returns (PythonResponse);
 }
