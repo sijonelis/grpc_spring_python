@@ -15,22 +15,22 @@ public class PythonOperationServer {
 
     private void start() throws IOException {
         /* The port on which the server should run */
-        int port = 50051;
+        int port = 50052;
         server = ServerBuilder.forPort(port)
             .addService(new PythonOperationImpl())
             .build()
             .start();
         logger.info("Server started, listening on " + port);
         Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                // Use stderr here since the logger may have been reset by its JVM shutdown hook.
-                System.err.println("*** shutting down gRPC server since JVM is shutting down");
-                PythonOperationServer.this.stop();
-                System.err.println("*** server shut down");
-            }
-        });
-    }
+        @Override
+        public void run() {
+            // Use stderr here since the logger may have been reset by its JVM shutdown hook.
+            System.err.println("*** shutting down gRPC server since JVM is shutting down");
+            PythonOperationServer.this.stop();
+            System.err.println("*** server shut down");
+        }
+    });
+}
 
     private void stop() {
         if (server != null) {
@@ -60,7 +60,25 @@ public class PythonOperationServer {
 
         @Override
         public void requestPython(PythonRequest req, StreamObserver<PythonResponse> responseObserver) {
-            PythonResponse reply = PythonResponse.newBuilder().setRespone(10).setError("").build();
+            int response = 0;
+            String error = "";
+            switch (req.getType()) {
+                case "add":
+                    response = req.getValue() + req.getOperand();
+                    break;
+                case "sub":
+                    response = req.getValue() - req.getOperand();
+                    break;
+                case "mul":
+                    response = req.getValue() * req.getOperand();
+                    break;
+                case "div":
+                    response = req.getValue() / req.getOperand();
+                    break;
+                default:
+                    error = "Unsupported operation";
+            }
+            PythonResponse reply = PythonResponse.newBuilder().setResponse(response).setError(error).build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
