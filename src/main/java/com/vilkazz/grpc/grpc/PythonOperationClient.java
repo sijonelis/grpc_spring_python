@@ -65,7 +65,7 @@ public class PythonOperationClient {
      * greeting.
      */
     public static void main(String[] args) throws Exception {
-        PythonOperationClient client = new PythonOperationClient("localhost", 50052);
+        PythonOperationClient client = new PythonOperationClient("localhost", 50051);
         try {
             /* Access a service running on the local machine on port 50051 */
 //            String user = "world";
